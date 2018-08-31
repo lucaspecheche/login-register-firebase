@@ -26,7 +26,7 @@ $('#btn-login').on('click', function(){
 
 	var email = $('#email').val();
 	var senha = $('#senha').val();
-	var manter_conectado = $('#checkbox-auth').is(':checked');
+	var manter_conectado = $('#customCheck1').is(':checked');
 
 	if (senha != "" && isEmail(email)) {
 
@@ -40,10 +40,10 @@ $('#btn-login').on('click', function(){
 		
 		alert_error(error);
 		if (!isEmail(email)) {
-			$('.input-email').append('<span class="alert-notification"><i class="fas fa-exclamation"></i></span>');
+			$('.input-email').append('<span class="icon-right"><i class="fas fa-exclamation"></i></span>');
 		}
 		if (senha == "") {
-			$('.input-password').append('<span class="alert-notification"><i class="fas fa-exclamation"></i></span>');
+			$('.input-password').append('<span class="icon-right"><i class="fas fa-exclamation"></i></span>');
 		}
 	}
 
@@ -74,9 +74,7 @@ function register () {
 
 firebase.auth().onAuthStateChanged(function(user) {
 	if (user) {
-	  	console.log("Usuario Logado: " + user.customClaims);
-	  	$('#user-name').html(user.displayName);
-	  	$('#user-image').attr('src', user.photoURL);
+	  	console.log(user);
 	  	
 	  	firebase.auth().currentUser.getIdToken(true).then(function(idToken) {
 		  	console.log(idToken);
@@ -91,7 +89,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 		});
 
 	} else {
-	    console.log("Usuario Saiu");
+	    console.log("Não autenticado...");
 	  }
 	});
 
@@ -99,6 +97,7 @@ $('#btn-sair').on('click', function (){
 	firebase.auth().signOut().then(function() {
   // Sign-out successful.
   	console.log("Usuario Saiu (Sair)");
+  	location.reload();
 }		).catch(function(error) {
 	console.log("Erro ao Sair");
   // An error happened.
@@ -179,7 +178,7 @@ function alert_error (error) {
 			break;
 
 		case "auth/user-not-found":
-			msg_error = "Não foi encontrado nenhum usuário registrado com essas credenciais. Por favor, verifique o email e senha informados";
+			msg_error = "Não encontramos nenhum usuário registrado com essas credenciais. Verifique o email e a senha informados e tente novamente.";
 			break;
 
 		default:
@@ -203,6 +202,12 @@ function isEmail(email) {
   	var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	return regex.test(email);
 }
+
+$('.pass-view').on('click', function (){
+
+	$('#senha').attr('type') == "password" ? ($('#senha').attr('type', 'text')) : ($('#senha').attr('type', 'password'));
+
+});
 
 function testeAdmin () {
 

@@ -57,27 +57,29 @@ header.login span, header.login i {
 	display:flex;
 	flex-direction:row;
 	align-items: center;
+  padding: 10px 0;
 }
 
 .divisa-botoes .divider {
   flex-grow: 1;
   height: 1px;
   border: 0;
-  background: rgba(0,0,0,.1);
+  background: rgba(0,0,0,.2);
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
-.divisa-botoes .text {
+.divisa-botoes span {
 	flex-grow: 0;
 	padding: 0 15px 0 15px;
+  font-weight: 600;
 }
 
 button i {
 	padding-right: 10px;
 }
 
-.alert-notification {
+.icon-right {
   position: absolute;   
   top: 0; 
   right: 0;
@@ -88,6 +90,16 @@ button i {
   z-index: 1000; 
 }
 
+.pass-view {
+  color: #000;
+  cursor: pointer;
+}
+
+.pass-view span {
+  margin-right: 10px;
+  border-left: 1px solid #BDBDBD;
+}
+
 small.r-pass {
   float: right;
   padding-top: 5px;
@@ -95,14 +107,28 @@ small.r-pass {
 
 small.r-pass a {
   text-decoration: none;
+  font-size: .85rem;
 }
 
-.form-check {
-  margin-top: 25px;
+.custom-checkbox {
+  margin: 25px 0 15px 0;
+}
+
+.custom-checkbox label {
+  padding-top: 2px;
+}
+
+.custom-checkbox label::before {
+  top: .25rem;
+}
+
+.form-group label {
+  font-weight: 600;
 }
 
 .btn-google {
   width: 48%;
+  font-weight: 600;
   color: #fff;
   background-color: #f32e06;
   border-color: #f32e06;
@@ -110,6 +136,7 @@ small.r-pass a {
 
 .btn-facebook {
   width: 48%;
+  font-weight: 600;
   color: #fff;
   background-color: #4e6cab;
   border-color: #4e6cab;
