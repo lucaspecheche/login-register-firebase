@@ -1,13 +1,4 @@
-$(document).ready(function(){
-
-/** DECLARAÇÕES **/
-var error = {
-	code: "check-values",
-	message: "Por favor, verifique sua senha."
-};
-
 /** Configuração do FIREBASE **/
-
 var config = {
 	apiKey: "AIzaSyC3Pua8fOvXFRhNX0l1yP9Hgu-o77kXlw4",
 	authDomain: "myproject-7babf.firebaseapp.com",
@@ -18,17 +9,24 @@ var config = {
 };
 
 firebase.initializeApp(config);
+/********************/
 
-/** FIM Config Firebase **/
+$(document).ready(function(){
+
+/** DECLARAÇÕES **/
+var error = {
+	code: "check-values",
+	message: "Por favor, verifique os campos abaixo.",
+};
 
 //LOGIN
 $('#btn-login').on('click', function(){
 
-	var email = $('#email').val();
-	var senha = $('#senha').val();
+	var email = (isEmail($('#email').val()));
+	var password = ($('#senha').val() != "");
 	var manter_conectado = $('#customCheck1').is(':checked');
 
-	if (senha != "" && isEmail(email)) {
+	if (email && password) {
 
 		firebase.auth().signInWithEmailAndPassword(email, senha).then(function(){
 			manter_conectado ? persistence_local() : persistence_session();
@@ -39,17 +37,11 @@ $('#btn-login').on('click', function(){
 	}else {
 		
 		alert_error(error);
-		if (!isEmail(email)) {
-			$('.input-email').append('<span class="icon-right"><i class="fas fa-exclamation"></i></span>');
-		}
-		if (senha == "") {
-			$('.input-password').append('<span class="icon-right"><i class="fas fa-exclamation"></i></span>');
-		}
+		if (!email) {$('.input-email').append('<div class="invalid-feedback" style="display:block">Verifique seu email.</div>');}
+		if (!password) {$('.input-password').append('<div class="invalid-feedback" style="display:block">Verifique sua senha.</div>');}
 	}
 
 });
-
-
 
 
 function register () {
@@ -63,10 +55,7 @@ function register () {
 	  	user.sendEmailVerification();
 	  	console.log(user);
 	 }).catch(function(error) {
-		var errorCode = error.code;
-		var errorMessage = error.message;
-		  console.log("Código do Erro: " + errorCode);
-		console.log("Msg Erro: " + errorMessage);
+		alert_error(error);
 	});
 }
 
@@ -74,18 +63,17 @@ function register () {
 
 firebase.auth().onAuthStateChanged(function(user) {
 	if (user) {
-	  	console.log(user);
+	  	console.log("Usuario Logou");
 	  	
 	  	firebase.auth().currentUser.getIdToken(true).then(function(idToken) {
-		  	console.log(idToken);
+		  //	console.log(idToken);
 		  //	$.post("index.php", {token: idToken}, function(data){
 			//console.log("Retorno: " + data);
 		//});
 		  	
 		  	
 		}).catch(function(error) {
-			var errorCode = error.code;
- 		    var errorMessage = error.message;
+			alert_error(error);
 		});
 
 	} else {
@@ -95,64 +83,42 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 $('#btn-sair').on('click', function (){
 	firebase.auth().signOut().then(function() {
-  // Sign-out successful.
-  	console.log("Usuario Saiu (Sair)");
-  	location.reload();
-}		).catch(function(error) {
-	console.log("Erro ao Sair");
-  // An error happened.
-});
+	  	console.log("Usuario Saiu (Sair)");
+	  	location.reload();
+	}).catch(function(error) {
+		alert_error(error);
+	});
 });
 
 //Login Google
-function google () {
+$('#btn-google').on('click', function (){
 	var provider = new firebase.auth.GoogleAuthProvider();
 
 	firebase.auth().signInWithPopup(provider).then(function(result) {
-	  // This gives you a Google Access Token. You can use it to access the Google API.
-	  var token = result.credential.accessToken;
-	  // The signed-in user info.
 	  var user = result.user;
 	  console.log(result);
-	  // ...
+
 	}).catch(function(error) {
-	  // Handle Errors here.
-	  var errorCode = error.code;
-	  var errorMessage = error.message;
-	  console.log(errorMessage);
-	  // The email of the user's account used.
-	  var email = error.email;
-	  console.log(email);
-	  // The firebase.auth.AuthCredential type that was used.
-	  var credential = error.credential;
-	  console.log(credential);
-	  // ...
+	  alert_error(error);
+	});
 });
-}
 
 function persistence_session () {
-	//Sair ao fechar a janela
-	firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
-	  .then(function() {
+	firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION).then(function() {
 	    console.log("Persistencia SESSION");
-	  })
-	  .catch(function(error) {
-	    var errorCode = error.code;
-	    var errorMessage = error.message;
-	    console.log("Erro SESSION: " + errorMessage);
+
+	  }).catch(function(error) {
+	    alert_error(error);
 	  });
 }
 
 function persistence_local () {
 	//Sair ao fechar a janela
-	firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-	  .then(function() {
+	firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(function() {
 	    console.log("Persistencia Local");
-	  })
-	  .catch(function(error) {
-	    var errorCode = error.code;
-	    var errorMessage = error.message;
-	    console.log("Erro Local: " + errorMessage);
+
+	  }).catch(function(error) {
+	    alert_error(error);
 	  });
 }
 
@@ -165,16 +131,18 @@ function postar () {
 }
 
 function alert_error (error) {
-	//remove_alerts();
+	remove_alerts();
 	var msg_error = "";
 
 	switch (error.code) {
+
 		case "auth/wrong-password":
 			msg_error = "Por favor, verifique sua senha.";
+			alert_error(error.code = "password-invalid");
 			break;
 
-		case "check-values":
-			msg_error = "Por favor verifique os campos abaixo";
+		case "check-values": //Padrão
+			msg_error = "Por favor verifique os campos abaixo.";
 			break;
 
 		case "auth/user-not-found":
@@ -183,6 +151,7 @@ function alert_error (error) {
 
 		default:
 			msg_error = "CODE: " + error.code + "<br> Msg Erro: " + error.message;
+			console.log(error);
 	}
 
 	$('.display-errors').append(
@@ -193,9 +162,10 @@ function alert_error (error) {
 			  );
 }
 
-function remove_alerts (selector = ".display-errors .alert") {
-		$(selector).remove();
-
+//Remove Alertas
+function remove_alerts () {
+	$('.display-errors .alert').remove();
+	$('.invalid-feedback').remove();
 }
 
 function isEmail(email) {
