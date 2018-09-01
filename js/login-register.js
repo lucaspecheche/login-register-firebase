@@ -165,7 +165,7 @@ function postar () {
 }
 
 function alert_error (error) {
-	remove_alerts();
+	//remove_alerts();
 	var msg_error = "";
 
 	switch (error.code) {
@@ -203,22 +203,18 @@ function isEmail(email) {
 	return regex.test(email);
 }
 
+//Ver Password
 $('.pass-view').on('click', function (){
-
 	$('#senha').attr('type') == "password" ? ($('#senha').attr('type', 'text')) : ($('#senha').attr('type', 'password'));
-
 });
 
-function testeAdmin () {
 
 
- admin.auth().verifyIdToken(idToken).then((claims) => {
-   if (claims.admin === true) {
-     // Allow access to requested admin resource.
-   }
- });
-
-
+//Verifica se é um MOBILE com resolução acima de 680px e aplica um zoom
+var screenWidth = $(window).width();
+if( (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) && (screenWidth > 680) ) {
+	$('body').css('zoom', '150%');
 }
+
 
 });

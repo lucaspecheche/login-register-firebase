@@ -3,37 +3,69 @@ html, body {
 	font-size: 0.9rem;
 }
 
-body {
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: inherit;
-  z-index: 1;
-  height: 100%;
-  background-color: #ffffff;
-  background-image: url("../img/overlay.png"), linear-gradient(to bottom, rgba(0,0,0,0.09) 0%,rgba(0,0,0,0.09) 50%), url("../img/bg.jpg"); /*rawpixel-558599-unsplash*/
-  background-repeat: repeat, no-repeat, no-repeat;
-  background-size: cover;
-  background-position: top left, center center,	bottom center;
-  background-attachment: fixed,	fixed, fixed;
+
+/** Configuração de > 576 **/
+@media screen and (min-width: 576px) {
+  body {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    height: 100%;
+    background-color: #ffffff;
+    background-image: url("../img/overlay.png"), linear-gradient(to bottom, rgba(0,0,0,0.09) 0%,rgba(0,0,0,0.09) 50%), url("../img/bg.jpg"); /*rawpixel-558599-unsplash*/
+    background-repeat: repeat, no-repeat, no-repeat;
+    background-size: cover;
+    background-position: top left, center center, bottom center;
+    background-attachment: fixed, fixed, fixed;
+}
+
+  #content {
+    width: 400px;
+  	padding: 20px;
+  	border: 1px solid #d3d3d3;
+  	border-radius: 5px;
+  	background-color: #fff;
+  	-webkit-box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
+
   }
 
-#content {
-	position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-	width: 400px;
-	padding: 20px;
-	border: 1px solid #d3d3d3;
-	border-radius: 5px;
-	background-color: #fff;
-	-webkit-box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
-  box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
+  .centerContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+  }
+
+}
+
+@media screen and (max-width: 576px) {
+
+  body {
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0; 
+    background-color: #F9F9F9;
+  }
+
+  #content {
+    min-width: 320px;
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #content {
+    width: 500px;
+  }
 }
 
 header.login {
@@ -79,6 +111,7 @@ button i {
 	padding-right: 10px;
 }
 
+/** ICONES A DIREITA DO INPUT **/
 .icon-right {
   position: absolute;   
   top: 0; 
@@ -99,6 +132,7 @@ button i {
   margin-right: 10px;
   border-left: 1px solid #BDBDBD;
 }
+/*************************************/
 
 small.r-pass {
   float: right;
@@ -141,3 +175,7 @@ small.r-pass a {
   background-color: #4e6cab;
   border-color: #4e6cab;
 }
+
+/** MEDIA QUERIES **/
+
+
