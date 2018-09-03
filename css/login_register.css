@@ -68,11 +68,11 @@ html, body {
   }
 }
 
-header.login {
+header#display-login {
 	text-align: center;
 }
 
-header.login span, header.login i {
+header#display-login span, header#display-login i {
 	font-size: 1.6rem;
 	font-weight: 600;
 	vertical-align: middle;
@@ -176,6 +176,11 @@ small.r-pass a {
   border-color: #4e6cab;
 }
 
+.hidden {
+  display: none;
+}
+
 /** MEDIA QUERIES **/
-
-
+.animated {
+  -webkit-filter: blur(0.000001px);
+}

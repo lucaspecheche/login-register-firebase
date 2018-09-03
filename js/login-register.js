@@ -178,13 +178,30 @@ $('.pass-view').on('click', function (){
 	$('#senha').attr('type') == "password" ? ($('#senha').attr('type', 'text')) : ($('#senha').attr('type', 'password'));
 });
 
-
-
 //Verifica se é um MOBILE com resolução acima de 680px e aplica um zoom
 var screenWidth = $(window).width();
 if( (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) && (screenWidth > 680) ) {
 	$('body').css('zoom', '150%');
 }
 
+$('#btn-elements-register').on('click', function (){
+	remove_alerts();
+	$('#form-confirm-password, #form-name').toggleClass('animated flipInX');
+	$('#form-email, #form-password').toggleClass('animated fadeIn');
+    $('.status').toggleClass('hidden');
+
+	//Remove a animação para não dar blurry
+	setTimeout(function(){
+		$('#form-confirm-password, #form-name').toggleClass('animated flipInX');
+		$('#form-email, #form-password').toggleClass('animated fadeIn');
+	}, 800);
+	
+
+	
+	
+
+	var name = $('#display-login span');
+	name.html() == "Login" ? name.html('Registrar') : name.html('Login');
+});
 
 });

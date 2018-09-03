@@ -10,15 +10,16 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/fontawesome-free-5.2.0-web/css/all.min.css">
 		<link rel="stylesheet" href="css/font_Montserrat.css">
+		<link rel="stylesheet" type="text/css" href="css/animate.css">
 		<link rel="stylesheet" type="text/css" href="css/login_register.css">
 	</head>
 	<body>
 		
 		<div id="content" class="centerContent">
 
-			<header class="login">
+			<header id="display-login">
 				<i class="fas fa-fingerprint"></i>
-				<span id="user-name">Login</span>
+				<span>Login</span>
 				<hr class="divider-gradient">
 			</header>
 
@@ -30,9 +31,20 @@
 			<!-- Sessão de Formularios -->
 			<section>
 				<form class="form">
+					<!--Input NAME -->
+					<div id="form-name" class="form-group status hidden">
+						<label>Nome</label>
+
+						<div class="input-group input-name">
+					        <div class="input-group-prepend">
+					        	<div class="input-group-text"><i class="fas fa-id-card"></i></div>
+					        </div>
+					        <input type="text" class="form-control" id="name" placeholder="Informe seu nome">
+					    </div>
+					</div>
 
 					<!-- Input EMAIL -->
-					<div class="form-group">
+					<div id="form-email" class="form-group">
 						<label>Email</label>
 
 						<div class="input-group input-email">
@@ -51,42 +63,59 @@
 					        <div class="input-group-prepend">
 					        	<div class="input-group-text"><i class="fas fa-key"></i></div>
 					        </div>
-					        <input type="password" class="form-control" id="senha" placeholder="Senha">
+					        <input type="password" class="form-control" id="senha" placeholder="Informe sua senha">
 					        <span class="icon-right pass-view"><span id="divi"></span><i class="far fa-eye"></i></span>
 					    </div>
-						<small class="form-text r-pass"><a href="" >Esqueci minha senha</a></small>
+						<small class="form-text r-pass status"><a href="" >Esqueci minha senha</a></small>
+					</div>
+
+					<!-- INPUT COMFIRME PASSWORD -->
+					<div id="form-confirm-password" class="form-group status hidden">
+						<label>Confirme sua senha</label>
+
+						<div class="input-group input-password">
+					        <div class="input-group-prepend">
+					        	<div class="input-group-text"><i class="fas fa-key"></i></div>
+					        </div>
+					        <input type="password" class="form-control" id="confirm-senha" placeholder="Confirme sua senha">
+					        <span class="icon-right pass-view"><span id="divi"></span><i class="far fa-eye"></i></span>
+					    </div>
 					</div>
 
 					<!-- Input CHECKBOX -->
-					
-
-					<div class="custom-control custom-checkbox">
+					<div class="custom-control custom-checkbox status">
 						<input type="checkbox" class="custom-control-input" id="customCheck1">
 						<label class="custom-control-label" for="customCheck1">Manter-me conectado</label>
 					</div>
 
 					<!-- Botão ENTRAR -->
-					<button id="btn-login" type="button" class="btn btn-primary btn-block">
+					<button id="btn-login" type="button" class="btn btn-primary btn-block status">
 						<i class="fas fa-sign-in-alt"></i><strong>Entrar</strong>
+					</button>
+					<!-- Botão Registrar -->
+					<button id="btn-register" type="button" class="btn btn-primary btn-block status hidden">
+						<i class="fas fa-user-plus"></i><strong>Registrar-me</strong>
 					</button>
 
 				</form>
 			</section>
 
-			<!-- Divisoria, OU LOGAR COM -->
-			<div class="divisa-botoes">
-				<i class="divider"></i>
-				<span>Ou, entrar com</span>
-				<i class="divider"></i>
-			</div>
-
 			<!-- Sessão de métodos de entrada -->
 			<section>
+			<!-- Divisoria, OU LOGAR COM -->
+				<div class="divisa-botoes">
+					<i class="divider"></i>
+					<span>Ou, entrar com</span>
+					<i class="divider"></i>
+				</div>
+
 				<button id="btn-facebook" class="btn btn-facebook"><i class="fab fa-facebook"></i>Facebook</button>
 				<button id="btn-google" class="btn btn-google"><i class="fab fa-google"></i>Google</button>
 			</section>
+
 		</div>
 		<button id="btn-sair" class="btn btn-primary">Sair</button>
+		<button id="btn-elements-register" class="btn btn-primary">Cadastrar-se</button>
 
 		<!-- Includes Scripts -->
 		<script src="js/jquery.min.js"></script>
