@@ -82,15 +82,18 @@ $('#elements-register, #btnelements-login').on('click', function (){
 	name.html() == "Login" ? name.html('Registrar') : name.html('Login');
 
 });*/
+	
 
 $('#option-register').on('click', function (){
 	remove_alerts();
-	$('.content').toggleClass('animated flipInX');
+	var animate = 'fadeIn';
+
+	$('.content').toggleClass('animated ' + animate);
     $('.status').toggleClass('hidden');
 
 	//Remove a animação para não dar blurry
 	setTimeout(function(){
-		$('.content').toggleClass('animated flipInX');
+		$('.content').toggleClass('animated '  + animate);
 	}, 700);
 
 	$(this).addClass('register-selected');
@@ -102,12 +105,13 @@ $('#option-register').on('click', function (){
 
 $('#option-login').on('click', function (){
 	remove_alerts();
-	$('.content').toggleClass('animated flipInX');
+	var animate = 'flipInX';
+	$('.content').toggleClass('animated ' + animate);
     $('.status').toggleClass('hidden');
 
 	//Remove a animação para não dar blurry
 	setTimeout(function(){
-		$('.content').toggleClass('animated flipInX');
+		$('.content').toggleClass('animated ' + animate);
 	}, 700);
 
 	$(this).addClass('login-selected');

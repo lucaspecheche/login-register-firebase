@@ -27,7 +27,7 @@ html, body {
     padding: 5px;
   	border: 1px solid #d3d3d3;
   	border-radius: 5px;
-  	background-color: #fff;
+  	background-color: #fafafa;
   	-webkit-box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
     box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
@@ -42,6 +42,10 @@ html, body {
     transform: translate(-50%, -50%);
   }
 
+  .border-full {
+    border: 1px solid #C2C7D0;
+  }
+
 }
 
 @media screen and (max-width: 576px) {
@@ -53,12 +57,16 @@ html, body {
     width: 100%;
     top: 0;
     left: 0; 
-    background-color: #F9F9F9;
+    background-color: #FFF;
   }
 
   #wrapper {
     min-width: 320px;
-    padding: 20px;
+    padding: 0;
+  }
+
+  .border-full {
+    border: none;
   }
 }
 
@@ -68,11 +76,8 @@ html, body {
   }
 }
 
-.border-full {
-  border: 1px solid #C2C7D0;
-}
-
 .content {
+  background-color: #fff;
   padding: 0 20px 20px 20px;
 }
 
@@ -86,7 +91,8 @@ html, body {
   align-items: center;
   text-align: center;
   width: 100%;
-  padding: 0px 0 50px 0;
+  padding: 0px 0 35px 0;
+  background-color: #fff;
 }
 
 #display-option .login {
@@ -144,9 +150,6 @@ html, body {
   border: 0;
   height: 1px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-}
-
-.form {
 }
 
 .divisa-botoes {
@@ -225,7 +228,10 @@ small.r-pass a {
 }
 
 #methods-input {
-  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 #methods-input .btn-google {
@@ -248,7 +254,3 @@ small.r-pass a {
   display: none;
 }
 
-/** MEDIA QUERIES **/
-.animated {
-  -webkit-filter: blur(0.000001px);
-}
