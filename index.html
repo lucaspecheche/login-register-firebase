@@ -15,7 +15,7 @@
 	</head>
 	<body>
 		
-		<div id="content" class="centerContent">
+		<div id="content" class="center-content">
 
 			<header id="display-login">
 				<i class="fas fa-fingerprint"></i>
@@ -56,7 +56,7 @@
 					</div>
 
 					<!--Input PASSWORD -->
-					<div class="form-group">
+					<div id="form-password" class="form-group">
 						<label>Senha</label>
 
 						<div class="input-group input-password">
@@ -101,7 +101,7 @@
 			</section>
 
 			<!-- Sessão de métodos de entrada -->
-			<section>
+			<section id="methods-input">
 			<!-- Divisoria, OU LOGAR COM -->
 				<div class="divisa-botoes">
 					<i class="divider"></i>
@@ -113,15 +113,28 @@
 				<button id="btn-google" class="btn btn-google"><i class="fab fa-google"></i>Google</button>
 			</section>
 
-		</div>
+			
+
+		</div> <!-- FIM Content -->
 		<button id="btn-sair" class="btn btn-primary">Sair</button>
-		<button id="btn-elements-register" class="btn btn-primary">Cadastrar-se</button>
+
+<!-- Sessão de Botões de Alternancia Login/Register -->
+			<section class="center-btn-elements">
+				<button id="btn-elements-register" class="btn btn-info btn-block status" style="margin-top: 10px;">
+				Não tenho conta <i class="fas fa-arrow-circle-right"></i></button>
+
+				<button id="btn-elements-login" class="btn btn-info btn-block status hidden">
+				<i class="fas fa-arrow-circle-left"></i>Já tenho um conta</button>
+			</section>
+			
+			
 
 		<!-- Includes Scripts
 		 -->
 		<script src="js/jquery.min.js"></script>
 		<script src="js/firebase-app.js"></script>
 		<script src="js/firebase-auth.js"></script>
-		<script src="js/login-register.js"></script>
+		<script src="js/validations.js"></script>
+		<script src="js/login-register-fb.js"></script>
 	</body>
 </html>

@@ -34,7 +34,7 @@ html, body {
 
   }
 
-  .centerContent {
+  .center-content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -108,7 +108,7 @@ header#display-login span, header#display-login i {
 }
 
 button i {
-	padding-right: 10px;
+	padding: 0 10px;
 }
 
 /** ICONES A DIREITA DO INPUT **/
@@ -160,7 +160,11 @@ small.r-pass a {
   font-weight: 600;
 }
 
-.btn-google {
+#methods-input {
+  text-align: center;
+}
+
+#methods-input .btn-google {
   width: 48%;
   font-weight: 600;
   color: #fff;
@@ -168,7 +172,7 @@ small.r-pass a {
   border-color: #f32e06;
 }
 
-.btn-facebook {
+#methods-input .btn-facebook {
   width: 48%;
   font-weight: 600;
   color: #fff;
