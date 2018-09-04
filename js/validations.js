@@ -63,8 +63,9 @@ if( (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navig
 	$('body').css('zoom', '150%');
 }
 
+/*
 //Alternar entre Login e Registrar
-$('#btn-elements-register, #btn-elements-login').on('click', function (){
+$('#elements-register, #btnelements-login').on('click', function (){
 	remove_alerts();
 	$('#form-confirm-password, #form-name').toggleClass('animated flipInX');
 	$('#form-email, #form-password').toggleClass('animated fadeIn');
@@ -79,6 +80,40 @@ $('#btn-elements-register, #btn-elements-login').on('click', function (){
 	//Altera o nome de Login - Registrar
 	var name = $('#display-login span');
 	name.html() == "Login" ? name.html('Registrar') : name.html('Login');
+
+});*/
+
+$('#option-register').on('click', function (){
+	remove_alerts();
+	$('.content').toggleClass('animated flipInX');
+    $('.status').toggleClass('hidden');
+
+	//Remove a animação para não dar blurry
+	setTimeout(function(){
+		$('.content').toggleClass('animated flipInX');
+	}, 700);
+
+	$(this).addClass('register-selected');
+	$(this).removeClass('register-not-selected');
+	$('#option-login').addClass('login-not-selected');
+	$('#option-login').removeClass('login-selected');
+
+});
+
+$('#option-login').on('click', function (){
+	remove_alerts();
+	$('.content').toggleClass('animated flipInX');
+    $('.status').toggleClass('hidden');
+
+	//Remove a animação para não dar blurry
+	setTimeout(function(){
+		$('.content').toggleClass('animated flipInX');
+	}, 700);
+
+	$(this).addClass('login-selected');
+	$(this).removeClass('login-not-selected');
+	$('#option-register').addClass('register-not-selected');
+	$('#option-register').removeClass('register-selected');
 
 });
 

@@ -22,9 +22,9 @@ html, body {
     background-attachment: fixed, fixed, fixed;
 }
 
-  #content {
-    width: 400px;
-  	padding: 20px;
+  #wrapper {
+    width: 450px;
+    padding: 5px;
   	border: 1px solid #d3d3d3;
   	border-radius: 5px;
   	background-color: #fff;
@@ -34,7 +34,7 @@ html, body {
 
   }
 
-  .center-content {
+  .center-wrapper {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -56,33 +56,97 @@ html, body {
     background-color: #F9F9F9;
   }
 
-  #content {
+  #wrapper {
     min-width: 320px;
     padding: 20px;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  #content {
+  #wrapper {
     width: 500px;
   }
 }
 
-header#display-login {
-	text-align: center;
+.border-full {
+  border: 1px solid #C2C7D0;
 }
 
-header#display-login span, header#display-login i {
-	font-size: 1.6rem;
+.content {
+  padding: 0 20px 20px 20px;
+}
+
+/**Botão de seleção Login/Register**/
+
+#display-option {
+	display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 0px 0 50px 0;
+}
+
+#display-option .login {
+  flex-basis: 50%;
+  padding: 20px 0;
+}
+
+#display-option .register {
+  flex-basis: 49.9%;
+  padding: 20px 0;
+}
+
+#display-option .login-selected {
+  color: #444;
+  background: #fff;
+}
+
+#display-option .register-not-selected {
+  color: #979faf;
+  background: #f9f9f9;
+  border-bottom: 1px solid #C2C7D0;
+  border-left: 1px solid #C2C7D0;
+  -webkit-box-shadow: inset 2px -2px 8px -1px rgba(194,199,208,1);
+  -moz-box-shadow: inset 2px -2px 8px -1px rgba(194,199,208,1);
+  box-shadow: inset 2px -2px 8px -1px rgba(194,199,208,1);
+  cursor: pointer;
+}
+
+#display-option .register-selected {
+  color: #444;
+  background: #fff;
+}
+
+#display-option .login-not-selected {
+  color: #979faf;
+  background: #f9f9f9;
+  border-bottom: 1px solid #C2C7D0;
+  border-right: 1px solid #C2C7D0;
+  -webkit-box-shadow: inset 2px -2px 8px -1px rgba(194,199,208,1);
+  -moz-box-shadow: inset 2px -2px 8px -1px rgba(194,199,208,1);
+  box-shadow: inset -2px -2px 8px -1px rgba(194,199,208,1);
+  cursor: pointer;
+}
+
+#display-option span, #display-option i {
+	font-size: 1.2rem;
 	font-weight: 600;
 	vertical-align: middle;
   padding-left: 10px;
 }
 
+/** FIM Botão **/
+
 .divider-gradient {
   border: 0;
   height: 1px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.form {
 }
 
 .divisa-botoes {
