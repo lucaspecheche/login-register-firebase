@@ -105,7 +105,7 @@ $('#option-register').on('click', function (){
 
 $('#option-login').on('click', function (){
 	remove_alerts();
-	var animate = 'flipInX';
+	var animate = 'fadeIn';
 	$('.content').toggleClass('animated ' + animate);
     $('.status').toggleClass('hidden');
 

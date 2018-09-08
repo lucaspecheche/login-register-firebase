@@ -10,8 +10,7 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/fontawesome-free-5.2.0-web/css/all.min.css">
 		<link rel="stylesheet" href="css/font_Montserrat.css">
-		<link rel="stylesheet" type="text/css" href="css/animation.css">
-		<link rel="stylesheet" type="text/css" href="css/login_register.css">
+		<link rel="stylesheet" href="css/login_register.css">
 	</head>
 	<body>
 		<div id="wrapper" class="center-wrapper">
@@ -76,7 +75,7 @@
 							        <input type="password" class="form-control" id="senha" placeholder="Informe sua senha">
 							        <span class="icon-right pass-view"><span id="divi"></span><i class="far fa-eye"></i></span>
 							    </div>
-								<small class="form-text r-pass status"><a href="" >Esqueci minha senha</a></small>
+								<small class="form-text recovery-pass status"><a href="" >Esqueci minha senha</a></small>
 							</div>
 
 							<!-- INPUT COMFIRME PASSWORD -->
@@ -88,7 +87,7 @@
 							        	<div class="input-group-text"><i class="fas fa-key"></i></div>
 							        </div>
 							        <input type="password" class="form-control" id="confirm-senha" placeholder="Confirme sua senha">
-							        <span class="icon-right pass-view"><span id="divi"></span><i class="far fa-eye"></i></span>
+							        <span class="icon-right pass-view"><span></span><i class="far fa-eye"></i></span>
 							    </div>
 							</div>
 
@@ -127,12 +126,16 @@
 				</div> <!-- FIM Content -->
 			</div>
 		</div>
-		<button id="btn-sair" class="btn btn-primary" style="display: none;">Sair</button>
+		<button id="btn-sair" class="btn btn-primary">Sair</button>
+
+
+		<button onclick="postar()" class="btn btn-primary">Postar</button>
 
 		<!-- Includes Scripts -->
 		<script src="js/jquery.min.js"></script>
 		<script src="js/firebase-app.js"></script>
 		<script src="js/firebase-auth.js"></script>
+		<script src="js/jquery.redirect.js"></script>
 		<script src="js/validations.js"></script>
 		<script src="js/login-register-fb.js"></script>
 	</body>

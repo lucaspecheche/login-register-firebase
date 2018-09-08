@@ -81,7 +81,7 @@ html, body {
   padding: 0 20px 20px 20px;
 }
 
-/**Botão de seleção Login/Register**/
+/****** ******Seleção Login/Register *************/
 
 #display-option {
 	display: flex;
@@ -144,7 +144,7 @@ html, body {
   padding-left: 10px;
 }
 
-/** FIM Botão **/
+/************* Divisão _____ TEXT ______ *****************/
 
 .divider-gradient {
   border: 0;
@@ -174,42 +174,41 @@ html, body {
   font-weight: 600;
 }
 
-button i {
-	padding: 0 10px;
-}
 
-/** ICONES A DIREITA DO INPUT **/
+/**************** ICONES A DIREITA e SOB o INPUT ****************/
 .icon-right {
   position: absolute;   
   top: 0; 
   right: 0;
   background: none;
   border: none;
-  color: #F00;
   padding: 8px 10px;
   z-index: 1000; 
 }
 
 .pass-view {
-  color: #000;
+  color: #3c3c3c;
   cursor: pointer;
 }
 
-.pass-view span {
+.pass-view span { /** Divisória **/
   margin-right: 10px;
   border-left: 1px solid #BDBDBD;
 }
-/*************************************/
 
-small.r-pass {
+/************** Esqueci minha Senha *****************/
+
+small.recovery-pass {
   float: right;
   padding-top: 5px;
 }
 
-small.r-pass a {
+small.recovery-pass a {
   text-decoration: none;
   font-size: .85rem;
 }
+
+/************ Checkbox Relembrar-me ***************/
 
 .custom-checkbox {
   margin: 25px 0 15px 0;
@@ -223,9 +222,7 @@ small.r-pass a {
   top: .25rem;
 }
 
-.form-group label {
-  font-weight: 600;
-}
+/***************** Botões de métodos de entradas *****************/
 
 #methods-input {
   display: flex;
@@ -250,7 +247,49 @@ small.r-pass a {
   border-color: #4e6cab;
 }
 
+/******************* Configurações Gerais *********************/
+
 .hidden {
   display: none;
 }
 
+.form-group label {
+  font-weight: 600;
+}
+
+button i {
+  padding: 0 10px;
+}
+
+/********** Animação FADEIN **************/
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}

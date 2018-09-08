@@ -19,16 +19,14 @@ $('#btn-login').on('click', function(){
 	var manter_conectado = $('#customCheck1').is(':checked');
 
 	if (isEmail(email) && password != "") {
-		alert("Aceitou");
 		firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
 			manter_conectado ? persistence_local() : persistence_session();
 
 		}).catch(function(error) {
-			
 			alert_error(error);
 		});
+
 	}else {
-		
 		alert_error(error);
 		if (!(isEmail($('#email').val()))) {$('.input-email').append('<div class="invalid-feedback" style="display:block">Verifique seu email.</div>');}
 		if (($('#senha').val() == "")) {$('.input-password').append('<div class="invalid-feedback" style="display:block">Verifique sua senha.</div>');}
@@ -56,23 +54,14 @@ function register () {
 
 firebase.auth().onAuthStateChanged(function(user) {
 	if (user) {
-	  	console.log("Usuario Logou");
-	  	
-	  	firebase.auth().currentUser.getIdToken(true).then(function(idToken) {
-		  //	console.log(idToken);
-		  //	$.post("index.php", {token: idToken}, function(data){
-			//console.log("Retorno: " + data);
-		//});
-		  	
-		  	
-		}).catch(function(error) {
-			alert_error(error);
-		});
-
+	  	console.log("Usuario Logou, redirecionando...");
+	  	console.log(user);
+	  	redirectToApp();
 	} else {
 	    console.log("Não autenticado...");
 	  }
 	});
+
 
 $('#btn-sair').on('click', function (){
 		firebase.auth().signOut().then(function() {
@@ -115,11 +104,12 @@ function persistence_local () {
 	  });
 }
 
-function postar () {
-	console.log("Postando...");
-	var idToken = "aaaaaaa";
-	$.post("index.php", {token: idToken}, function(data){
-		console.log("Retorno: " + data);
+function redirectToApp () {
+	firebase.auth().currentUser.getIdToken(true).then(function(idToken) {
+		console.log("Post...");
+		$.redirect("http://localhost/fb/server/index.php", {tokenId: idToken}, "POST");
+	}).catch(function(error) {
+			alert_error(error);
 	});
 }
 
